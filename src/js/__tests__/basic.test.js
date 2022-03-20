@@ -95,3 +95,33 @@ test("should prop for characters", () => {
 
   expect(new Daemon("Alex")).toEqual(playerDaemon);
 });
+
+test("should level up", () => {
+  const daemon = new Daemon("Alex");
+  daemon.levelUp();
+  const daemonLevelUpExpected = {
+    name: "Alex",
+    type: "Daemon",
+    health: 100,
+    level: 2,
+    attack: 12,
+    defence: 48,
+  };
+
+  expect(daemon).toEqual(daemonLevelUpExpected);
+});
+
+test("should prop for characters", () => {
+  const daemon = new Daemon("Alex");
+  daemon.damage(10);
+  let daemonDamageExpected = {
+    name: "Alex",
+    type: "Daemon",
+    health: 94,
+    level: 1,
+    attack: 10,
+    defence: 40,
+  };
+
+  expect(daemon).toEqual(daemonDamageExpected);
+});
