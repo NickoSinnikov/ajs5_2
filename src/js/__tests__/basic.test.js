@@ -99,7 +99,7 @@ test("should prop for characters", () => {
 test("should level up", () => {
   const daemon = new Daemon("Alex");
   daemon.levelUp();
-  const daemonLevelUpExpected = {
+  let daemonLevelUpExpected = {
     name: "Alex",
     type: "Daemon",
     health: 100,
@@ -124,4 +124,20 @@ test("should prop for characters", () => {
   };
 
   expect(daemon).toEqual(daemonDamageExpected);
+});
+
+test("should error if person died", () => {
+  const daemon = new Daemon("Alex");
+
+  daemon.health = 0;
+
+  expect(() => daemon.damage(10)).toThrow();
+});
+
+test("should error if person died", () => {
+  const daemon = new Daemon("Alex");
+
+  daemon.health = 0;
+
+  expect(() => daemon.levelUp()).toThrow();
 });

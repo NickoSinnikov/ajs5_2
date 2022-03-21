@@ -6,6 +6,7 @@ export default class Character {
     }
     this.name = name;
     this.type = type;
+    this.attack = attack;
     this.health = health;
     this.level = level;
 
@@ -33,18 +34,19 @@ export default class Character {
       this.attack = 10;
       this.defence = 40;
     }
+  }
 
-    const levelUp = function () {
-      if (this.health > 0) {
-        this.level = +1;
-        this.attack = +(attack * 0.2);
-        this.defence = +(defence * 0.2);
-      } else throw new Error("Нельзя повысить уровень");
-    };
-    const damage = function (points) {
-      if (this.health > 0) {
-        this.health -= points * (1 - defence / 100);
-      } else throw new Error("Персонаж уже умер");
-    };
+  levelUp() {
+    if (this.health > 0) {
+      this.level += 1;
+      this.attack += this.attack * 0.2;
+      this.defence += this.defence * 0.2;
+    } else throw new Error("Нельзя повысить уровень");
+  }
+
+  damage(points) {
+    if (this.health > 0) {
+      this.health -= points * (1 - this.defence / 100);
+    } else throw new Error("Персонаж уже умер");
   }
 }
