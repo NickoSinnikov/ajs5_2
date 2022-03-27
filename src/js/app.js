@@ -1,12 +1,11 @@
 // TODO: write your code here
 export default class Character {
-  constructor(name, type, health = 100, level = 1, attack, defence) {
+  constructor(name, type, health = 100, level = 1) {
     if (name.length < 2 || name.length > 10 || typeof type !== "string") {
       throw new Error("Неверные данные");
     }
     this.name = name;
     this.type = type;
-    this.attack = attack;
     this.health = health;
     this.level = level;
 
